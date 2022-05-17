@@ -61,6 +61,12 @@ public class AchievementsFragment extends Fragment {
         columns.addView(successTextView, 2);
         columns.addView(unsuccessTextView, 3);
 
+        for (int i = 0; i < 4; i++) {
+            TextView temp = (TextView) columns.getVirtualChildAt(i);
+            temp.setTextColor(Color.BLACK);
+            temp.setTextSize(16);
+        }
+
         table.addView(columns);
         if (cursor.moveToFirst()){
             do {

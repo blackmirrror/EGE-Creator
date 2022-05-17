@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -139,10 +141,16 @@ public class FavoriteFragment extends Fragment {
 
         for (int i = 0; i < questions.size(); i++) {
             TableRow tableRow = new TableRow(getActivity());
+            tableRow.setPadding(4, 16, 4, 0);
+            tableRow.setGravity(Gravity.CENTER);
             tableRow.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
                     TableLayout.LayoutParams.WRAP_CONTENT));
             TextView textView = new TextView(getActivity());
             textView.setText("Задание " + (i + 1));
+            textView.setBackgroundResource(R.drawable.botton_task_clicked);
+            textView.setTextSize(20);
+            textView.setPadding(16, 0, 16, 0);
+            textView.setTextColor(Color.BLACK);
             tableRow.addView(textView, 0);
             int finalI = i;
             textView.setOnClickListener(new View.OnClickListener() {
