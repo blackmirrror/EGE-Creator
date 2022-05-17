@@ -51,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnSignIn = findViewById(R.id.buttonSignIn);
+        btnSignIn.setBackgroundResource(R.drawable.btn_sign_in);
         btnRegister = findViewById(R.id.buttonRegister);
+        btnRegister.setBackgroundResource(R.drawable.btn_sign_in);
 
         root = findViewById(R.id.root_element);
 
@@ -97,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText email = signInWindow.findViewById(R.id.emailField);
         final EditText password = signInWindow.findViewById(R.id.passwordField);
         btnRemember = signInWindow.findViewById(R.id.remember_btn);
+        btnRemember.setBackgroundResource(R.drawable.btn_sign_in);
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 
         btnRemember.setOnClickListener(new View.OnClickListener() {
