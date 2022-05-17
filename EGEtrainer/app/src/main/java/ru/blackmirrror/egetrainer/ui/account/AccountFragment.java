@@ -1,18 +1,14 @@
 package ru.blackmirrror.egetrainer.ui.account;
 
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Context.*;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.widget.LinearLayout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -24,10 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ru.blackmirrror.egetrainer.R;
-import ru.blackmirrror.egetrainer.TempActivity;
 import ru.blackmirrror.egetrainer.databinding.FragmentAccountBinding;
 
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -41,7 +35,6 @@ import com.google.firebase.database.DatabaseError;
 import ru.blackmirrror.egetrainer.Models.User;
 
 public class AccountFragment extends Fragment {
-
     private AccountViewModel accountViewModel;
     private FragmentAccountBinding binding;
 
@@ -192,7 +185,6 @@ public class AccountFragment extends Fragment {
                     }
                 }
         );
-
         return root;
     }
 
