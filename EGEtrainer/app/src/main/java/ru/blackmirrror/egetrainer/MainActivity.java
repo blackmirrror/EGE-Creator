@@ -87,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
     private void showSignInWindow() {
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setTitle("Enter");
-        dialog.setMessage("Enter your date");
+        dialog.setTitle("Вход");
+        dialog.setMessage("Введите ваши данные");
 
         LayoutInflater inflater = LayoutInflater.from(this);
         View signInWindow = inflater.inflate(R.layout.sign_in_window, null);
@@ -105,75 +105,27 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(KEY_EMAIL, email.getText().toString());
                 editor.putString(KEY_PASSWORD, password.getText().toString());
-                Toast.makeText(MainActivity.this, "Remember successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Запомнил!", Toast.LENGTH_SHORT).show();
                 editor.apply();
             }
         });
 
-        //CheckBox remembe = findViewById(R.id.checkBoxRemembe);
-        /*if (remembe.isChecked()){
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(KEY_EMAIL, email.getText().toString());
-            editor.putString(KEY_PASSWORD, password.getText().toString());
-            Toast.makeText(MainActivity.this, "Remember successfully", Toast.LENGTH_SHORT).show();
-            editor.apply();
-        }
-        else {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.clear();
-            editor.commit();
-            Toast.makeText(MainActivity.this, "Log out successfully", Toast.LENGTH_SHORT).show();
-            finish();
-        }*/
-        /*CheckBox remember = findViewById(R.id.checkBoxRemembe);
-
-        SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
-        String checkbox = preferences.getString("remember", "");
-        if (checkbox.equals("true")){
-            //ToDo заменить класс Temp на Search
-            Intent intent = new Intent(MainActivity.this, TempActivity.class);
-            startActivity(intent);
-        }
-        else if (checkbox.equals("false")) {
-            Toast.makeText(this, "Please Sign In", Toast.LENGTH_SHORT).show();
-        }*/
-
-        /*remembe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (buttonView.isChecked()){
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(KEY_EMAIL, email.getText().toString());
-                    editor.putString(KEY_PASSWORD, password.getText().toString());
-                    Toast.makeText(MainActivity.this, "Remember successfully", Toast.LENGTH_SHORT).show();
-                    editor.apply();
-                }
-                else if (!buttonView.isChecked()){
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.clear();
-                    editor.commit();
-                    Toast.makeText(MainActivity.this, "Log out successfully", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-            }
-        });*/
-
-        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton("Назад", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 dialogInterface.dismiss();
             }
         });
 
-        dialog.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 if (TextUtils.isEmpty(email.getText().toString())) {
-                    Snackbar.make(root, "You need to enter your email", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(root, "Вам необходимо ввести почту", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
                 if (password.getText().toString().length() < 8) {
-                    Snackbar.make(root, "The password must contain more than 8 characters", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(root, "Пароль не может содержать менее 8 символов", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -189,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         System.out.println(e.toString());
-                        Snackbar.make(root, "Error", Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(root, "Ошибка", Snackbar.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -201,8 +153,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void shoeRegisterWindow() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setTitle("Register");
-        dialog.setMessage("Enter your date");
+        dialog.setTitle("Регистрация");
+        dialog.setMessage("Введите ваши данные");
 
         LayoutInflater inflater = LayoutInflater.from(this);
         View registerWindow = inflater.inflate(R.layout.register_window, null);
@@ -213,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText firstName = registerWindow.findViewById(R.id.firstNameField);
         final EditText lastName = registerWindow.findViewById(R.id.lastNameField);
 
-        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton("Назад", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 dialogInterface.dismiss();
@@ -221,23 +173,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        dialog.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 if (TextUtils.isEmpty(email.getText().toString())) {
-                    Snackbar.make(root, "You need to enter your email", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(root, "Вам необходимо ввести почту", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(firstName.getText().toString())) {
-                    Snackbar.make(root, "You need to enter your email", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(root, "Вам необходимо ввести имя", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(lastName.getText().toString())) {
-                    Snackbar.make(root, "You need to enter your email", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(root, "Вам необходимо ввести фамилию", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
                 if (password.getText().toString().length() < 8) {
-                    Snackbar.make(root, "The password must contain more than 8 characters", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(root, "Пароль должен содержать не менее 8 символов", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -257,12 +209,12 @@ public class MainActivity extends AppCompatActivity {
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {
-                                                Snackbar.make(root, "You are registered", Snackbar.LENGTH_SHORT).show();
+                                                Snackbar.make(root, "Регистрация прошла успешно", Snackbar.LENGTH_SHORT).show();
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Snackbar.make(root, "Error", Snackbar.LENGTH_SHORT).show();
+                                        Snackbar.make(root, "Ошибка", Snackbar.LENGTH_SHORT).show();
                                     }
                                 });
 

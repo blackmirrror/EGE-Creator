@@ -6,27 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".ui.search.SearchFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/changeSub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:text="Выбери предмет"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="50dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/changeSub"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center"
-                android:text="Выбери предмет"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="bold" />
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -34,168 +41,382 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center">
 
-                    <Button
-                        android:id="@+id/btnMathBase"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:text="Математика базовая"
-                        android:textColor="@color/white"
-                        android:background="@drawable/botton_sign_in"
-                        android:textSize="16dp" />
+                        android:orientation="vertical"
+                        android:layout_marginRight="30dp">
 
+                        <ImageButton
+                            android:id="@+id/btnMathBase"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@color/white"
+                            android:src="@drawable/mathbase"
+                            android:scaleType="centerCrop"
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/botton_sign_in"/>
 
-                    <Button
-                        android:id="@+id/btnMathProf"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Математика базовая"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:text="Математика профильная"
-                        android:textColor="@color/white"
-                        android:background="@drawable/botton_sign_in"
-                        android:textSize="16dp" />
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/btnMathProf"
+                            android:backgroundTint="@color/white"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:src="@drawable/mathprof"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/botton_sign_in"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Математика профильная"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center">
 
-                    <Button
-                        android:id="@+id/btnInf"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:text="Информатика"
-                        android:textColor="@color/white"
-                        android:background="@drawable/botton_sign_in"
-                        android:textSize="16dp" />
+                        android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/btnPhis"
+                        <ImageButton
+                            android:id="@+id/btnInf"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@color/white"
+                            android:src="@drawable/inf"
+                            android:scaleType="centerCrop"
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/botton_sign_in"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Информатика"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:text="Физика"
-                        android:textColor="@color/white"
-                        android:background="@drawable/botton_sign_in"
-                        android:textSize="16dp" />
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/btnPhis"
+                            android:backgroundTint="@color/white"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:src="@drawable/phis"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/botton_sign_in"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Физика"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center">
 
-                    <Button
-                        android:id="@+id/btnRus"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:text="Русский язык"
-                        android:textColor="@color/white"
-                        android:background="@drawable/botton_sign_in"
-                        android:textSize="16dp" />
+                        android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/btnEng"
+                        <ImageButton
+                            android:id="@+id/btnRus"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@color/white"
+                            android:src="@drawable/rus"
+                            android:scaleType="centerCrop"
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/botton_sign_in"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Русский язык"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:text="Английский язык"
-                        android:textColor="@color/white"
-                        android:background="@drawable/botton_sign_in"
-                        android:textSize="16dp" />
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/btnEng"
+                            android:backgroundTint="@color/white"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:src="@drawable/eng"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/botton_sign_in"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Английский язык"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center">
 
-                    <Button
-                        android:id="@+id/btnHis"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:text="История"
-                        android:textColor="@color/white"
-                        android:background="@drawable/botton_sign_in"
-                        android:textSize="16dp" />
+                        android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/btnSoc"
+                        <ImageButton
+                            android:id="@+id/btnBio"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@color/white"
+                            android:src="@drawable/bio"
+                            android:scaleType="centerCrop"
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/botton_sign_in"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Биология"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:text="Обществознание"
-                        android:textColor="@color/white"
-                        android:background="@drawable/botton_sign_in"
-                        android:textSize="16dp" />
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/btnChem"
+                            android:backgroundTint="@color/white"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:src="@drawable/chem"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/botton_sign_in"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Химия"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center">
 
-                    <Button
-                        android:id="@+id/btnBio"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:text="Биология"
-                        android:textColor="@color/white"
-                        android:background="@drawable/botton_sign_in"
-                        android:textSize="16dp" />
+                        android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/btnChem"
+                        <ImageButton
+                            android:id="@+id/btnHis"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@color/white"
+                            android:src="@drawable/his"
+                            android:scaleType="centerCrop"
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/botton_sign_in"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="История"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:text="Химия"
-                        android:textColor="@color/white"
-                        android:background="@drawable/botton_sign_in"
-                        android:textSize="16dp" />
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/btnSoc"
+                            android:backgroundTint="@color/white"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:src="@drawable/soc"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/botton_sign_in"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Обществознание"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center">
 
-                    <Button
-                        android:id="@+id/btnLeat"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:text="Литература"
-                        android:textColor="@color/white"
-                        android:background="@drawable/botton_sign_in"
-                        android:textSize="16dp" />
+                        android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/btnGeog"
+                        <ImageButton
+                            android:id="@+id/btnLeat"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@color/white"
+                            android:src="@drawable/leat"
+                            android:scaleType="centerCrop"
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/botton_sign_in"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Литература"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:text="География"
-                        android:textColor="@color/white"
-                        android:background="@drawable/botton_sign_in"
-                        android:textSize="16dp" />
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/btnGeog"
+                            android:backgroundTint="@color/white"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:src="@drawable/geog"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/botton_sign_in"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="География"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
                 </TableRow>
+
+
             </TableLayout>
         </LinearLayout>
     </ScrollView>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

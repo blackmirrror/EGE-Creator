@@ -58,7 +58,7 @@ public class Questions2Activity extends AppCompatActivity implements View.OnClic
     FirebaseStorage storage;
     StorageReference storageRef;
 
-    private static final long COUNTDOWN_IN_MILLIS = 14400000;
+    private static final long COUNTDOWN_IN_MILLIS = 14100000;
     private CountDownTimer countDownTimer;
     private long timeLeftMillis;
 
@@ -201,7 +201,7 @@ public class Questions2Activity extends AppCompatActivity implements View.OnClic
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(getApplicationContext(), "Ошибка!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Ошибка!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -326,13 +326,6 @@ public class Questions2Activity extends AppCompatActivity implements View.OnClic
         String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds);
 
         timer.setText(timeFormatted);
-
-        /*if (timeLeftMillis < 10000) {
-            timer.setTextColor(Color.RED);
-        }
-        else {
-            timer.setTextColor(colorStateList);
-        }*/
     }
 
     private void showResult() {
