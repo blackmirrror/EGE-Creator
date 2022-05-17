@@ -48,23 +48,26 @@ public class AchievementsFragment extends Fragment {
         TableRow columns = new TableRow(getContext());
 
         TextView nameTextView = new TextView(getActivity());
-        nameTextView.setText("Название");
+        nameTextView.setText("Предмет");
         TextView allTextView = new TextView(getActivity());
         allTextView.setText("Всего");
         TextView successTextView = new TextView(getActivity());
-        successTextView.setText("Успешных");
+        successTextView.setText("Верно");
         TextView unsuccessTextView = new TextView(getActivity());
-        unsuccessTextView.setText("Неуспешных");
+        unsuccessTextView.setText("Неверно");
 
         columns.addView(nameTextView, 0);
         columns.addView(allTextView, 1);
         columns.addView(successTextView, 2);
         columns.addView(unsuccessTextView, 3);
+        columns.setBackgroundResource(R.drawable.ach_res);
 
         for (int i = 0; i < 4; i++) {
             TextView temp = (TextView) columns.getVirtualChildAt(i);
             temp.setTextColor(Color.BLACK);
-            temp.setTextSize(16);
+            temp.setTextSize(20);
+            temp.setPadding(0,0,16,0);
+            temp.setGravity(Gravity.CENTER);
         }
 
         table.addView(columns);
@@ -73,11 +76,12 @@ public class AchievementsFragment extends Fragment {
                 int a = cursor.getInt(cursor.getColumnIndex(QuizContract.TaskSuccess.SUCCESS));
                 int b = cursor.getInt(cursor.getColumnIndex(QuizContract.TaskSuccess.UNSUCCESS));
                 String s = cursor.getString(cursor.getColumnIndex(QuizContract.TaskSuccess.SUBJECT));
+                String ss = getSubject(s);
                 TableRow tableRow = new TableRow(getActivity());
                 tableRow.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
                         TableLayout.LayoutParams.WRAP_CONTENT));
                 TextView t1 = new TextView(getContext());
-                t1.setText(s);
+                t1.setText(ss);
                 TextView t2 = new TextView(getContext());
                 t2.setText(String.valueOf(a+b));
                 TextView t3 = new TextView(getContext());
@@ -89,9 +93,47 @@ public class AchievementsFragment extends Fragment {
                 tableRow.addView(t3, 2);
                 tableRow.addView(t4, 3);
                 table.addView(tableRow);
+                for (int i = 0; i < 4; i++){
+                    TextView temp = (TextView) tableRow.getVirtualChildAt(i);
+                    temp.setGravity(Gravity.CENTER);
+                    temp.setTextSize(16);
+                    temp.setTextColor(Color.BLACK);
+                    temp.setPadding(0,4,0,4);
+                }
             } while(cursor.moveToNext());
         }
         cursor.close();
+    }
+
+    private String getSubject(String s) {
+        switch (s){
+            case "mathBase":
+                return "Математика базовая";
+            case "mathProf":
+                return "Математика профильная";
+            case "rus":
+                return "Русский язык";
+            case "eng":
+                return "Английский язык";
+            case "inf":
+                return "Информатика";
+            case "phis":
+                return "Физика";
+            case "soc":
+                return "Обществознание";
+            case "his":
+                return "История";
+            case "bio":
+                return "Биология";
+            case "chem":
+                return "Химия";
+            case "leat":
+                return "Литература";
+            case "geog":
+                return "География";
+            default:
+                return "Химия";
+        }
     }
 
     public void fetchDb(){

@@ -11,47 +11,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:gravity="center"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="256dp"
+            android:layout_height="256dp"
+            android:src="@drawable/main"
+            android:layout_gravity="center"
+            android:layout_marginTop="64dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/anaheim"
-            android:text="@string/appInName"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="35dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/anaheim"
-            android:text="@string/appNameAuthor"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="15dp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textBotton"
-        android:layout_alignParentBottom="true"
-        android:textSize="12dp"
-        android:textColor="@android:color/black"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/textBotton" />
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="260dp"
+            android:text="ЕГЭ тренажер"
+            android:textSize="30dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:weightSum="2"
-        android:layout_above="@+id/textBotton"
         android:layout_margin="15dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -59,19 +40,19 @@
 
         <Button
             android:id="@+id/buttonSignIn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="6dp"
             android:layout_weight="1"
             android:background="@drawable/botton_sign_in"
             android:fontFamily="@font/anaheim"
-            android:text="Войти"
+            android:text="Вход"
             android:textColor="@color/white"
             android:textStyle="bold"/>
 
         <Button
             android:id="@+id/buttonRegister"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="6dp"
             android:layout_weight="1"
@@ -80,6 +61,8 @@
             android:text="Регистрация"
             android:textColor="@color/white"
             android:textStyle="bold"/>
+    </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>
