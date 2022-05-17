@@ -74,9 +74,10 @@ public class FavoriteFragment extends Fragment {
 
             selectionArgsIds[i] = favourite_ids.get(i).toString();
         }
-        cursor = mDb.rawQuery("SELECT * FROM " + QuizContract.QuestionTable.TABLE_NAME +
-                " WHERE " + where, selectionArgsIds);
-
+        if (!where.equals("")){
+            cursor = mDb.rawQuery("SELECT * FROM " + QuizContract.QuestionTable.TABLE_NAME +
+                    " WHERE " + where, selectionArgsIds);
+        }
         if (cursor.moveToFirst()) {
             do {
 
