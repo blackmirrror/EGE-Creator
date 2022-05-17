@@ -7,12 +7,24 @@
     tools:context=".ui.achievements.AchievementsFragment">
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Твоя статистика"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
         <TableLayout
             android:id="@+id/choiseTable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:stretchColumns="*"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
