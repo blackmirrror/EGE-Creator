@@ -10,8 +10,9 @@
     <color name="grey">#34343434</color>
     <color name="prim_btn1">#FAB7FF</color>
     <color name="second_btn1">#B181B5</color>
-    <color name="orange_button">#FD6021</color>
-    <color name="yellow_button">#fdc210</color>
-    <color name="blue_button">#184f78</color>
-    <color name="blue2_button">#1db6c2</color>
+    <color name="orange_button">#f87026</color>
+    <color name="yellow_button">#ffb52e</color>
+    <color name="purple_button">#5f55ae</color>
+    <color name="blue_button">#40c1fa</color>
+    <color name="green_button">#9ccf1b</color>
 </resources>
