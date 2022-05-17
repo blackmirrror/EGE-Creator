@@ -98,6 +98,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/botton_sign_in"
                     android:text="Назад"
+                    app:backgroundTint="@color/blue_button"
                     android:fontFamily="@font/montserrat_alternates"
                     android:textSize="20dp" />
 
@@ -109,6 +110,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/botton_sign_in"
                     android:text="Далее"
+                    app:backgroundTint="@color/orange_button"
                     android:textSize="20dp"
                     android:fontFamily="@font/montserrat_alternates"/>
 

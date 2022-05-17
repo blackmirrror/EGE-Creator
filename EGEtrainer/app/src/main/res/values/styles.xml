@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="OrangeButton" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">#fd6021</item>
+    </style>
+</resources>
