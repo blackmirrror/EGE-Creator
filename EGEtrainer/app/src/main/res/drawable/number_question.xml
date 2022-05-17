@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 <item>
     <shape android:shape="oval">
-        <solid android:color="@color/prim_btn1"/>
+        <solid android:color="@color/yellow_button"/>
         <size android:height="40dp"
             android:width="40dp"/>
         <padding android:left="4dp"/>
