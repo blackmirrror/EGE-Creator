@@ -22,7 +22,7 @@
             android:textColor="@color/black"
             android:textSize="24dp"
             android:textStyle="bold"/>
-<<<<<<< HEAD
+
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chart"
@@ -30,8 +30,6 @@
             android:layout_height="350dp"
             android:layout_marginBottom="32dp"/>
 
-=======
->>>>>>> main
         <HorizontalScrollView
 
             android:layout_width="match_parent"
