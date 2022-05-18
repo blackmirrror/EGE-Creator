@@ -21,7 +21,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 import ru.blackmirrror.egetrainer.R;
 import ru.blackmirrror.egetrainer.Models.DatabaseHelper;
@@ -39,6 +45,9 @@ public class AchievementsFragment extends Fragment {
 
     private DatabaseHelper mDBHelper;
     private SQLiteDatabase mDb;
+    private LineChart chart;
+
+    ArrayList<Entry> entries;
 
     @SuppressLint("Range")
     public void set_statistics(){
@@ -55,11 +64,14 @@ public class AchievementsFragment extends Fragment {
         successTextView.setText("Верно");
         TextView unsuccessTextView = new TextView(getActivity());
         unsuccessTextView.setText("Неверно");
+        //TextView dateTextView = new TextView(getActivity());
+        //dateTextView.setText("Дата");
 
         columns.addView(nameTextView, 0);
         columns.addView(allTextView, 1);
         columns.addView(successTextView, 2);
         columns.addView(unsuccessTextView, 3);
+        //columns.addView(dateTextView, 4);
         columns.setBackgroundResource(R.drawable.ach_res);
 
         for (int i = 0; i < 4; i++) {
@@ -71,12 +83,15 @@ public class AchievementsFragment extends Fragment {
         }
 
         table.addView(columns);
+        int c = 1;
         if (cursor.moveToFirst()){
             do {
                 int a = cursor.getInt(cursor.getColumnIndex(QuizContract.TaskSuccess.SUCCESS));
                 int b = cursor.getInt(cursor.getColumnIndex(QuizContract.TaskSuccess.UNSUCCESS));
                 String s = cursor.getString(cursor.getColumnIndex(QuizContract.TaskSuccess.SUBJECT));
                 String ss = getSubject(s);
+                //String date = cursor.getString(cursor.getColumnIndex(QuizContract.TaskSuccess.DATE));
+                entries.add(new Entry(c, a));
                 TableRow tableRow = new TableRow(getActivity());
                 tableRow.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
                         TableLayout.LayoutParams.WRAP_CONTENT));
@@ -88,10 +103,13 @@ public class AchievementsFragment extends Fragment {
                 t3.setText(String.valueOf(a));
                 TextView t4 = new TextView(getContext());
                 t4.setText(String.valueOf(b));
+                //TextView t5 = new TextView(getContext());
+                //t5.setText(String.valueOf(date));
                 tableRow.addView(t1, 0);
                 tableRow.addView(t2, 1);
                 tableRow.addView(t3, 2);
                 tableRow.addView(t4, 3);
+                //tableRow.addView(t5, 4);
                 table.addView(tableRow);
                 for (int i = 0; i < 4; i++){
                     TextView temp = (TextView) tableRow.getVirtualChildAt(i);
@@ -100,6 +118,7 @@ public class AchievementsFragment extends Fragment {
                     temp.setTextColor(Color.BLACK);
                     temp.setPadding(0,4,0,4);
                 }
+                c++;
             } while(cursor.moveToNext());
         }
         cursor.close();
@@ -158,9 +177,18 @@ public class AchievementsFragment extends Fragment {
         binding = FragmentAchievementsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         table = root.findViewById(R.id.choiseTable);
+        chart = root.findViewById(R.id.chart);
+        entries = new ArrayList<>();
 
         fetchDb();
         set_statistics();
+        LineDataSet dataset = new LineDataSet(entries, "Вариант/кол-во решенных задач");
+        LineData data = new LineData(dataset);
+        dataset.setColor(Color.GREEN);
+        chart.setData(data);
+        chart.invalidate();
+        chart.animateY(500);
+
         return root;
     }
 

@@ -42,6 +42,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Locale;
 
 import ru.blackmirrror.egetrainer.Models.DatabaseHelper;
@@ -76,7 +77,7 @@ public class Questions2Activity extends AppCompatActivity implements View.OnClic
     int questionTotalCount;
     Question currentQuestion;
     String an;
-    String subjectt, choicee, numberr;
+    String subjectt, choicee, numberr, date;
 
     ImageButton imageButton;
     boolean flag = true;
@@ -102,9 +103,16 @@ public class Questions2Activity extends AppCompatActivity implements View.OnClic
             throw mSQLException;
         }
 
+        getDate();
         showTimer();
         setUpUI();
         startTest();
+    }
+
+    private void getDate() {
+        Calendar c = Calendar.getInstance();
+        date = c.get(Calendar.DAY_OF_MONTH) + "." +
+                c.get(Calendar.MONTH);
     }
 
     @SuppressLint("Range")
@@ -376,6 +384,7 @@ public class Questions2Activity extends AppCompatActivity implements View.OnClic
         } else{
             ContentValues values = new ContentValues();
             values.put(QuizContract.TaskSuccess.SUBJECT, subj);
+            //values.put(QuizContract.TaskSuccess.DATE, date);
             long id = mDb.insert(QuizContract.TaskSuccess.TABLE_NAME, null, values);
             System.out.println(id);
         }

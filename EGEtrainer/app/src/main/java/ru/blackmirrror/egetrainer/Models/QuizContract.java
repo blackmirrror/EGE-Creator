@@ -44,6 +44,7 @@ public final class QuizContract {
         public static final String SUBJECT = "subject";
         public static final String SUCCESS = "success";
         public static final String UNSUCCESS = "unsuccess";
+        public static final String DATE = "date";
     }
 
 }
