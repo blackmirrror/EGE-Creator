@@ -164,12 +164,12 @@ public class ChoiserActivity extends AppCompatActivity {
 
                         int done, nodone;
 
-                        if (sharedPreferences.contains(subject + choice + textView.getText().toString().substring(8)+0))
+                        if (sharedPreferences.contains(subject + choice + textView.getText().toString().substring(8)+"0"))
                         {
-                            done = sharedPreferences.getInt( subject + choice +
-                                    textView.getText().toString().substring(8) + "0", 0);
-                            nodone = sharedPreferences.getInt(subject + choice +
-                                    textView.getText().toString().substring(8) + "1", 0);
+                            done = Integer.parseInt(sharedPreferences.getString( subject + choice +
+                                    textView.getText().toString().substring(8) + "0", null));
+                            nodone = Integer.parseInt(sharedPreferences.getString(subject + choice +
+                                    textView.getText().toString().substring(8) + "1", null));
                         }
                         else{
                             done = 0;

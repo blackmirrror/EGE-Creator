@@ -114,13 +114,13 @@ public class ResultActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         for (int i = 0; i < 2; i++) {
             if(!sharedPreferences.contains(strForPref+i)) {
-                editor.putInt(strForPref+i, done[i]);
+                editor.putString(strForPref+i, done[i]+"");
                 editor.apply();
             }
             else {
                 editor.remove(strForPref+i);
                 editor.clear();
-                editor.putInt(strForPref+i, done[i]);
+                editor.putString(strForPref+i, done[i]+"");
                 editor.apply();
             }
         }
