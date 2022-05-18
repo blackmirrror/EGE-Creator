@@ -413,6 +413,9 @@ public class Questions2Activity extends AppCompatActivity implements View.OnClic
         Intent intent = new Intent(Questions2Activity.this, ResultActivity.class);
         intent.putExtra("questionTotalCount", questionTotalCount);
         for (int i = 0; i < questionTotalCount; i++) {
+            intent.putExtra("sub", subjectt);
+            intent.putExtra("task", choicee);
+            intent.putExtra("num", numberr);
             intent.putExtra("a" + i, questionArrayList.get(i).getAnswer());
             intent.putExtra("ay" + i, answers.get(i));
             if (questionArrayList.get(i).getAnswer().equals(answers.get(i))){

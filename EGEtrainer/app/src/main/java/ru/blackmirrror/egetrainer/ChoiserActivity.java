@@ -1,5 +1,6 @@
 package ru.blackmirrror.egetrainer;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -18,6 +20,13 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.api.Distribution;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +48,8 @@ public class ChoiserActivity extends AppCompatActivity {
 
     RemDbHelper remDbHelper;
     public static final String APP_PREFERENCES = "doneTasks";
-    SharedPreferences mSettings;
+    public static final String DIAGRAM_PREFERENCES = "diagramDone";
+    SharedPreferences mSettings, sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +68,7 @@ public class ChoiserActivity extends AppCompatActivity {
         remDbHelper = new RemDbHelper(this);
 
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(DIAGRAM_PREFERENCES, Context.MODE_PRIVATE);
 
         variants.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +98,7 @@ public class ChoiserActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void showLayout(String choice) {
 
         tableLayout.removeAllViews();
@@ -111,9 +123,19 @@ public class ChoiserActivity extends AppCompatActivity {
 
                 for (int j = 0; j < COLUMNS; j++) {
                     if (temp > 0) {
+
+                        LinearLayout linear = new LinearLayout(this);
+                        linear.setOrientation(LinearLayout.VERTICAL);
+                        linear.setGravity(Gravity.CENTER);
+
+                        PieChart pieChart = new PieChart(this);
+                        pieChart.setForegroundGravity(Gravity.CENTER);
+
                         LinearLayout linearLayout = new LinearLayout(this);
                         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
                         linearLayout.setGravity(Gravity.CENTER);
+                        //linear.addView(pieChart);
+                        //linear.addView(linearLayout);
 
                         ImageView imageView = new ImageView(this);
                         imageView.setImageResource(R.drawable.ic_baseline_done_all_24);
@@ -135,11 +157,48 @@ public class ChoiserActivity extends AppCompatActivity {
                         textView.setGravity(Gravity.CENTER);
                         textView.setPadding(32, 0, 32, 0);
 
+                        //linearLayout.addView(imageView);
+                        //linearLayout.addView(textView);
+
+                        /*ArrayList<PieEntry> pieEntries = new ArrayList();
+
+                        int done, nodone;
+
+                        if (sharedPreferences.contains(subject + choice + textView.getText().toString().substring(8)+0))
+                        {
+                            done = sharedPreferences.getInt( subject + choice +
+                                    textView.getText().toString().substring(8) + "0", 0);
+                            nodone = sharedPreferences.getInt(subject + choice +
+                                    textView.getText().toString().substring(8) + "1", 0);
+                        }
+                        else{
+                            done = 0;
+                            nodone = 10;
+                        }
+
+                        pieEntries.add(new PieEntry(done, "Верно"));
+                        pieEntries.add(new PieEntry(nodone, "Неверно"));
+
+                        PieDataSet pieDataSet = new PieDataSet(pieEntries, "Решение");
+                        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                        pieDataSet.setValueTextColor(Color.BLACK);
+                        pieDataSet.setFormSize(128f);
+                        pieDataSet.setValueTextSize(16f);
+
+                        PieData pieData = new PieData(pieDataSet);
+
+                        pieChart.setData(pieData);
+                        pieChart.getDescription().setEnabled(false);
+                        //pieChart.setCenterText("Решение");
+                        pieChart.animate();*/
+
+                        //linear.addView(pieChart);
                         linearLayout.addView(imageView);
                         linearLayout.addView(textView);
+                        linear.addView(linearLayout);
 
                         //tableRow.addView(textView, j);
-                        tableRow.addView(linearLayout, j);
+                        tableRow.addView(linear, j);
 
                         textView.setOnClickListener(new View.OnClickListener() {
                             @Override

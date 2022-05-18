@@ -2,6 +2,7 @@ package ru.blackmirrror.egetrainer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -14,7 +15,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import ru.blackmirrror.egetrainer.Models.DoneTasks;
+import ru.blackmirrror.egetrainer.Models.Task;
+
 public class ResultActivity extends AppCompatActivity {
+
+    SharedPreferences sharedPreferences;
+    public static final String DIAGRAM_PREFERENCES = "diagramDone";
 
     TextView out;
 
@@ -24,6 +31,8 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         out = findViewById(R.id.textout);
+
+        sharedPreferences = getSharedPreferences(DIAGRAM_PREFERENCES, Context.MODE_PRIVATE);
 
         out.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,10 +47,18 @@ public class ResultActivity extends AppCompatActivity {
 
     private void createTable() {
 
+        int[] done = {0,0};
+
         ArrayList<String> answers = new ArrayList<String>();
         ArrayList<String> answersYour = new ArrayList<String>();
 
         Bundle arguments = getIntent().getExtras();
+        String subject = arguments.getString("sub");
+        String task = arguments.getString("task");
+        String num = arguments.getString("num");
+
+        String strForPref = subject+task+num;
+
         int questionTotalCount = arguments.getInt("questionTotalCount");
         for (int i = 0; i < questionTotalCount; i++){
             answers.add(arguments.getString("a" + i));
@@ -72,8 +89,10 @@ public class ResultActivity extends AppCompatActivity {
                         textView.setText(answersYour.get(i-1));
                         if (answers.get(i-1).equals(answersYour.get(i-1))) {
                             textView.setBackgroundResource(R.drawable.correct_answer);
+                            done[0]++;
                         } else {
                             textView.setBackgroundResource(R.drawable.correct_no_answer);
+                            done[1]++;
                         }
                     }
                 }
@@ -90,6 +109,20 @@ public class ResultActivity extends AppCompatActivity {
             }
 
             tableLayout.addView(tableRow, i);
+        }
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        for (int i = 0; i < 2; i++) {
+            if(!sharedPreferences.contains(strForPref+i)) {
+                editor.putInt(strForPref+i, done[i]);
+                editor.apply();
+            }
+            else {
+                editor.remove(strForPref+i);
+                editor.clear();
+                editor.putInt(strForPref+i, done[i]);
+                editor.apply();
+            }
         }
     }
 }
